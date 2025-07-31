@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante Sabor & Arte - Cardápio</title>
+    <style>
+        /* Reset e Estilos Gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Cabeçalho */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Navegação */
+        nav {
+            background-color: #34495e;
+            padding: 15px 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: #2c3e50;
+        }
+        
+        /* Seções do Cardápio */
+        .menu-section {
+            background-color: white;
+            margin: 30px 0;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            color: #2c3e50;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        /* Itens do Cardápio */
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .menu-item {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .item-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .menu-item:hover .item-image img {
+            transform: scale(1.05);
+        }
+        
+        .item-details {
+            padding: 20px;
+        }
+        
+        .item-name {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .item-description {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .item-price {
+            font-weight: bold;
+            color: #e74c3c;
+            font-size: 1.2rem;
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+        }
+        
+        .social-links {
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #e74c3c;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .menu-section {
+                padding: 20px;
+            }
+            
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .item-name {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Restaurante Sabor & Arte</h1>
+            <p>Sabores que encantam, momentos que ficam</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#entradas">Entradas</a></li>
+                <li><a href="#principais">Pratos Principais</a></li>
+                <li><a href="#sobremesas">Sobremesas</a></li>
+                <li><a href="#bebidas">Bebidas</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <section id="entradas" class="menu-section">
+            <h2 class="section-title">Entradas</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Bruschetta">
+                    </div>
+                    <div class="item-details">
+                        <h3 class="item-name">Bruschetta Clássica</h3>
+                        <p class="item-description">Pão italiano grelhado com tomates frescos, manjericão, alho e azeite de oliva extra virgem.</p>
+                        <p class="item-price">R$ 18,90</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Carpaccio">
+                    </div>
+                    <div class="item-details">
+                        <h3 class="item-name">Carpaccio de Filé Mignon</h3>
+                        <p class="item-description">Finas fatias de filé mignon cru, temperadas com azeite, limão, alcaparras e parmesão.</p>
+                        <p class="item-price">R$ 32,50</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Camarão">
+                    </div>
+                    <div class="item-details">
+                        <h3 class="item-name">Camarão ao Alho e Óleo</h3>
+                        <p class="item-description">Camarões frescos refogados no alho e azeite, finalizados com salsa e pimenta dedo-de-moça.</p>
+                        <p class="item-price">R$ 45,90</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="principais" class="menu-section">
+            <h2 class="section-title">Pratos Principais</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Risoto">
+                    </div>
+                    <div class="item-details">
+                        <h3 class="item-name">Risoto de Funghi</h3>
+                        <p class="item-description">Arroz arbóreo cremoso com cogumelos funghi secos, vinho branco e queijo parmesão.</p>
+                        <p class="item-price">R$ 58,90</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Filé Mignon">
+                    </div>
+                    <div class="item-details">
+                        <h3 class="item-name">Filé Mignon com Molho de Vinho</h3>
+                        <p class="item-description">Corte nobre grelhado, servido com molho reduzido de vinho tinto e acompanhamentos.</p>
+                        <p class="item-price">R$ 89,90</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Salmão">
+                    </div>
+                    <div class="item-details">
+                        <h3 class="item-name">Salmão Grelhado</h3>
+                        <p class="item-description">Postas de salmão grelhadas com crosta de ervas, acompanhadas de legumes grelhados.</p>
+                        <p class="item-price">R$ 72,50</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="sobremesas" class="menu-section">
+            <h2 class="section-title">Sobremesas</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Tiramisu">
+                    </div>
+                    <div class="item-details">
+                        <h3 class="item-name">Tiramisù Tradicional</h3>
+                        <p class="item-description">Clássico italiano com camadas de biscoito champanhe embebido em café e creme de mascarpone.</p>
+                        <p class="item-price">R$ 24,90</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Cheesecake">
+                    </div>
+                    <div class="item-details">
+                        <h3 class="item-name">Cheesecake de Frutas Vermelhas</h3>
+                        <p class="item-description">Torta de queijo cremosa com calda de frutas vermelhas frescas e base crocante de biscoito.</p>
+                        <p class="item-price">R$ 22,50</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Mousse">
+                    </div>
+                    <div class="item-details">
+                        <h3 class="item-name">Mousse de Chocolate Belga</h3>
+                        <p class="item-description">Mousse cremosa feita com chocolate belga 70% cacau, finalizada com raspas de chocolate.</p>
+                        <p class="item-price">R$ 19,90</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="bebidas" class="menu-section">
+            <h2 class="section-title">Bebidas</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Vinhos">
+                    </div>
+                    <div class="item-details">
+                        <h3 class="item-name">Vinho Tinto Reserva</h3>
+                        <p class="item-description">Vinho tinto chileno Cabernet Sauvignon, safra 2018, garrafa 750ml.</p>
+                        <p class="item-price">R$ 129,90</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Cerveja">
+                    </div>
+                    <div class="item-details">
+                        <h3 class="item-name">Cerveja Artesanal IPA</h3>
+                        <p class="item-description">Cerveja tipo India Pale Ale, amarga e aromática, garrafa 600ml.</p>
+                        <p class="item-price">R$ 24,90</p>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Drinks">
+                    </div>
+                    <div class="item-details">
+                        <h3 class="item-name">Caipirinha Premium</h3>
+                        <p class="item-description">Tradicional drink brasileiro com cachaça envelhecida, limão tahiti e açúcar demerara.</p>
+                        <p class="item-price">R$ 28,50</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>Restaurante Sabor & Arte</p>
+            <p>Rua Gastronomia, 123 - Centro - São Paulo/SP</p>
+            <p>Telefone: (11) 1234-5678</p>
+            <p>Horário de Funcionamento: Terça a Domingo, das 12h às 23h</p>
+            
+            <div class="social-links">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            
+            <p>&copy; 2023 Restaurante Sabor & Arte. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    
+    <!-- Ícones do Font Awesome (opcional, requer conexão com internet) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
